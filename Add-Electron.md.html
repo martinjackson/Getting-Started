@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>Add-Electron</title>
+      <link rel="stylesheet" type="text/css" href="markdown.css">
+  </head>
+  <body class='markdown-preview'><h1>How to Get Started with React &amp; Electron</h1>
+<h2>Prerequisites</h2>
+<ul>
+<li>
+<p>Install Node &amp; npm</p>
+</li>
+<li>
+<p>Install create-react-app</p>
+</li>
+</ul>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>sudo&nbsp;npm&nbsp;install&nbsp;create-react-app&nbsp;-g</span></span></span></div></pre>
+<h2>Starting the project from scratch</h2>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>cd&nbsp;~/projects</span></span></span></div></pre>
+<p>create a new project</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>create-react-app&nbsp;your-project-name</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>cd&nbsp;your-project-name</span></span></span></div></pre>
+<p>run the shell of an example</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>npm&nbsp;install</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>npm&nbsp;start</span></span></span></div></pre>
+<h1>Adding Electrion to your example app</h1>
+<h2>You have used create-react-app to create your project and your React components working in the the browser (localhost:3000), now lets add Electron and make this a stand-alone app</h2>
+<h3>1) Add the following to package.json</h3>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&quot;main&quot;:&nbsp;&quot;src/main.js&quot;,</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&quot;scripts&quot;:&nbsp;{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>&quot;launch-dev&quot;:&nbsp;&quot;electron&nbsp;.&quot;,</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;&quot;launch-prod&quot;:&nbsp;&quot;export&nbsp;NODE_ENV=production&nbsp;;&nbsp;electron&nbsp;.&quot;,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></div></pre>
+<p>npm scripts search in <code>./node_modules/.bin/</code> for commands, so
+to run manually <code>./node_modules/.bin/electron .</code></p>
+<h3>2) Create the standard main.js (change 1 line)</h3>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;win.loadURL(`file://${__dirname}/index.html`)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>win.loadURL(&#39;</span><span class="markup underline link http hyperlink"><span>http://localhost:3000/index.html</span></span><span>&#39;);</span></span></span></div></pre>
+<h3>3) Add Electron to the project</h3>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>npm&nbsp;install&nbsp;electron-prebuilt&nbsp;--save</span></span></span></div></pre>
+<h1>This works !!!</h1>
+<ul>
+<li>perfect in dev mode
+npm run launch-dev (while npm start is running webpack-dev-server)</li>
+<li>ALMOST in PROD mode
+<ul>
+<li>need to modify the build/index.html
+it has absolute paths &quot;/main.7cbecfc~~~.css&quot;
+where  “main.7cbecfc~~~.css” would have worked</li>
+<li>the imported svg in App.js turns into
+file:///84287d09b8053c6fa598893b8910786a.svg Failed to load resource: net::ERR_FILE_NOT_FOUND
+looks like main.js needs to change the working directory ???</li>
+</ul>
+</li>
+</ul>
+<h4>Notes</h4>
+<p>The development index.html does not need</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span>&nbsp;&nbsp;</span><span class="meta paragraph text"><span>&lt;script&nbsp;type=&quot;text/javascript&quot;&nbsp;src=&quot;/webpack-dev-server.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&lt;script&nbsp;type=&quot;text/javascript&quot;&nbsp;src=&quot;/bundle.js&quot;&gt;&lt;/script&gt;</span></span></span></div></pre>
+<p>as create-react-app will dynamically add these at runtime</p></body>
+</html>
