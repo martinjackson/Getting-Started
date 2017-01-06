@@ -34,12 +34,13 @@ Now, lets add Electron and make this a stand-alone app.
 
 # Adding Electrion to your application
 
-### 1) Add Electron (and set-env) to the project dependancies
+#### 1) Add Electron (and set-env) to the project dependancies
 ```
-npm install electron set-env --save
+npm install electron --save
+npm install cross-env --save-dev
 ```
 
-### 2) Create a [main.js](main.js) (like the one from electron-quick-start with these lines changed)
+#### 2) Create a [main.js](main.js) (like the one from electron-quick-start with these lines changed)
 ```
 var url = (process.env.NODE_ENV == 'live') ?
       'http://localhost:3000/index.html' :
@@ -47,17 +48,17 @@ var url = (process.env.NODE_ENV == 'live') ?
 mainWindow.loadURL(url);
 ```
 
-### 3) Add the following to package.json
+#### 3) Add the following to package.json
 
 ```
 "main": "main.js",
 
 "scripts": {
-    "dev":  "set-env NODE_ENV=live electron .",
-    "prod": "set-env NODE_ENV=prod electron .",    
+    "dev":  "cross-env NODE_ENV=live electron .",
+    "prod": "cross-env NODE_ENV=prod electron .",    
 ```
 
-Remeber: `npm run dev` requires that you have `npm start` already running in
+Remember: `npm run dev` requires that you have `npm start` already running in
 another shell.
 
 
