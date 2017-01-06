@@ -26,34 +26,44 @@ run the shell of an example
 ```
 npm install
 npm start
+open http://localhost:3000
 ```
 
-# Adding Electrion to your example app
+You have running react project with live-reload.  Modify your components and when you save them the MHR will reload your browser and show you the changes.
+Now, lets add Electron and make this a stand-alone app.
 
-## You have used create-react-app to create your project and your React components working in the the browser (localhost:3000), now lets add Electron and make this a stand-alone app
+# Adding Electrion to your application
 
-### 1) Add the following to package.json
+### 1) Add Electron (and set-env) to the project dependancies
+```
+npm install electron set-env --save
+```
+
+### 2) Create a [main.js](main.js) (like the one from electron-quick-start with these lines changed)
+```
+var url = (process.env.NODE_ENV == 'live') ?
+      'http://localhost:3000/index.html' :
+      'file://' + __dirname + '/build/index.html';
+mainWindow.loadURL(url);
+```
+
+### 3) Add the following to package.json
 
 ```
-"main": "src/main.js",
+"main": "main.js",
 
 "scripts": {
-    "launch-dev": "electron .",
-    "launch-prod": "export NODE_ENV=production ; electron .",    
-```
-npm scripts search in ```./node_modules/.bin/``` for commands, so
-to run manually ```./node_modules/.bin/electron .```
-
-### 2) Create the standard main.js (change 1 line)
-```
-// win.loadURL(`file://${__dirname}/index.html`)
-win.loadURL('http://localhost:3000/index.html');
+    "dev":  "set-env NODE_ENV=live electron .",
+    "prod": "set-env NODE_ENV=prod electron .",    
 ```
 
-### 3) Add Electron to the project
-```
-npm install electron-prebuilt --save
-```
+Remeber: `npm run dev` requires that you have `npm start` already running in
+another shell.
+
+
+Note: npm scripts search in ```./node_modules/.bin/``` for commands, so to run these independently of npm  ```./node_modules/.bin/electron .```
+
+
 
 # This works !!!
 - perfect in dev mode
@@ -74,3 +84,9 @@ The development index.html does not need
   <script type="text/javascript" src="/bundle.js"></script>
 ```
 as create-react-app will dynamically add these at runtime
+
+
+##### create-react-app by default no longer builds a bundle.js but seperate js and css files.
+
+##### electron-prebuilt is phased out in favor of electron
+As of Electron version 1.3.1, you can `npm install electron --save-dev` to install the latest precompiled version of Electron in your app. [read more here](http://electron.atom.io/blog/2016/08/16/npm-install-electron)
