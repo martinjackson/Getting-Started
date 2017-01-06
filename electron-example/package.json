@@ -1,0 +1,29 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "main": "main.js",
+  "homepage": "./",
+  "private": true,
+  "devDependencies": {
+    "asar": "^0.12.4",
+    "cross-env": "^3.1.4",
+    "electron-packager": "^8.4.0",
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "electron": "^1.4.13",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "cross-env NODE_ENV=live electron .",
+    "prod": "cross-env NODE_ENV=prod electron .",
+    "packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module",
+    "makeEXE": "npm run build && npm run packager"
+  }
+}

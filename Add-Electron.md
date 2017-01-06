@@ -52,6 +52,7 @@ mainWindow.loadURL(url);
 
 ```
 "main": "main.js",
+"homepage": "./",
 
 "scripts": {
     "dev":  "cross-env NODE_ENV=live electron .",
@@ -91,3 +92,24 @@ as create-react-app will dynamically add these at runtime
 
 ##### electron-prebuilt is phased out in favor of electron
 As of Electron version 1.3.1, you can `npm install electron --save-dev` to install the latest precompiled version of Electron in your app. [read more here](http://electron.atom.io/blog/2016/08/16/npm-install-electron)
+
+
+#### References
+
+electron-userland/electron-packager: Package and distribute your Electron app with OS-specific bundles (.app, .exe etc) via JS or CLI
+https://github.com/electron-userland/electron-packager
+
+electron-packager/usage.txt at master · electron-userland/electron-packager
+https://github.com/electron-userland/electron-packager/blob/master/usage.txt
+
+Usage | Yarn
+https://yarnpkg.com/en/docs/usage
+
+Migrating from npm | Yarn
+https://yarnpkg.com/en/docs/migrating-from-npm
+
+
+#### Articles
+
+Releasing Electron for Windows - Josh Bavari's Ramblings
+http://jbavari.github.io/blog/2015/09/09/releasing-electron-for-windows/
