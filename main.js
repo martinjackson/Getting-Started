@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from 'electron';
-import { client } from 'electron-connect';
 
 let mainWindow = null;
 
