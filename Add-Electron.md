@@ -56,7 +56,10 @@ mainWindow.loadURL(url);
 
 "scripts": {
     "dev":  "cross-env NODE_ENV=live electron .",
-    "prod": "cross-env NODE_ENV=prod electron .",    
+    "prod": "cross-env NODE_ENV=prod electron .",   
+    "packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "makeEXE": "npm run build && npm run packager"
+
 ```
 
 Remember: `npm run dev` requires that you have `npm start` already running in
