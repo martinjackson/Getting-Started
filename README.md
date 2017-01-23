@@ -14,13 +14,13 @@ with the following destinations:
 
 [Electron] where you can create stand alone executables for Mac, Windows, Linux, RaspberryPi using HTML5/CSS/Javascript + JS libraries for desktop, toolbar, and File I/O.  The View portion continues to be powered by [React].
 
-&bull; [Instructions](blob/master/Add-Electrion.md) &nbsp;&nbsp;&nbsp; &bull; [Code](blob/master/electron-example)
+&bull; [Instructions](Add-Electron.md) &nbsp;&nbsp;&nbsp; &bull; [Code](electron-example)
 
 -----------------------------
 
 Single Page App (SPA), web application with [NodeJS] API back-end.
 
-&bull;[Instructions](blob/master/Add-Node-Server-API.md) &nbsp;&nbsp;&nbsp; &bull; [Code](blob/master/node-example)
+&bull;[Instructions](Add-Node-Server-API.md) &nbsp;&nbsp;&nbsp; &bull; [Code](node-example)
 
 -----------------------------
 
