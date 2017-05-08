@@ -52,7 +52,7 @@
   "watch:start-api": "cd server; nodemon server.js 8081 ",
   "start": "npm-run-all --parallel watch:*",
   "prod:bundle": "webpack",
-  "prod:server": "cd server; sudo nodemon server.js | tee mbsnode-react-testrun-$(hostname).log",
+  "prod:server": "cd server; sudo nodemon server.js | tee run-$(hostname).log",
   "prod": "yarn run prod:bundle; yarn run prod:server"
 },
 "author": "Martin Jackson <martin.a.jackson@gmail.com>",
