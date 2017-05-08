@@ -2,7 +2,7 @@
 
 var version = {
 		"name":      "react-with-node-example",
-		"buildTime": "17:02:25.523Z",
+		"buildTime": "17:05:28.110Z",
 		"buildDate": "2017-05-08",
 		"version":   "0.1.0",
 		"NodeJS":    "v7.9.0",

@@ -3,12 +3,10 @@
 
 ## Prerequisites
 
-- Install Node & npm
+- Install Node & npm, git
+- ~~Install create-react-app~~ (project has drifted away from single bundle.js)
+- clone this project, use the webpack.config.js and package.json from this project as a starting point
 
-- Install create-react-app
-```
-sudo npm install create-react-app -g
-```
 
 ## Starting the project from scratch
 
@@ -18,15 +16,22 @@ cd ~/projects
 
 create a new project
 ```
-create-react-app your-project-name
+git clone https://github.com/martinjackson/Getting-Started-With-React.git your-project-name
 cd your-project-name
 ```
 
 run the shell of an example
 ```
-npm install
-npm start
+cd node-example/   
+yarn
+yarn start
 open http://localhost:3000
+```
+**OR**
+```
+cd electron-example/
+yarn
+yarn start
 ```
 
 You have running react project with live-reload.  Modify your components and when you save them the MHR will reload your browser and show you the changes.
@@ -83,15 +88,12 @@ Note: npm scripts search in ```./node_modules/.bin/``` for commands, so to run t
 
 #### Notes
 
-The development index.html does not need
+The index.html will be the same as the production one, webpack-dev-server does not modify it (like some tutorials).  You also do not need the following.
 ```
   <script type="text/javascript" src="/webpack-dev-server.js"></script>
-  <script type="text/javascript" src="/bundle.js"></script>
 ```
-as create-react-app will dynamically add these at runtime
 
 
-##### create-react-app by default no longer builds a bundle.js but seperate js and css files.
 
 ##### electron-prebuilt is phased out in favor of electron
 As of Electron version 1.3.1, you can `npm install electron --save-dev` to install the latest precompiled version of Electron in your app. [read more here](http://electron.atom.io/blog/2016/08/16/npm-install-electron)
