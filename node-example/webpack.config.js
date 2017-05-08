@@ -11,7 +11,6 @@ var webpackVersion = require('./node_modules/webpack/package.json').version;
 const config = {
   context: path.resolve(__dirname, 'src'),
   entry: './renderer.js',
-  target: 'node',                   // dont pack libraries supplied by NodeJS
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'
