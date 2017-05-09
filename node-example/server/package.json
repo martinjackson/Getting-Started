@@ -1,13 +1,15 @@
 {
   "dependencies": {
     "body-parser": "^1.16.0",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-watch": "^2.0.5"
   },
   "scripts": {
-    "run:server": "babel-watch server.js"
+    "run:server": "babel-watch server.js",
+    "watch:start-api": "nodemon server.js 8081"
   }
 }
