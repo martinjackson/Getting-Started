@@ -3,23 +3,19 @@ const webpack = require('webpack')
 const path = require('path')
 var VersionFile = require('webpack-version-file-plugin');
 
-var libPath = path.join(__dirname, 'src');
-var wwwPath = path.join(__dirname, 'public');
-var pkg = require('./package.json');
-var webpackVersion = require('./node_modules/webpack/package.json').version;
-
 const config = {
   context: path.resolve(__dirname, 'src'),
   entry: './entry.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'main', 'public'),
     filename: 'bundle.js'
   },
+  target: 'electron-renderer',  // important for require('fs'), 'electron') etc.
   devtool: 'source-map',
   devServer: {
      host: '0.0.0.0',     // allow more than localhost
      port: 8080,
-     contentBase: './public/',
+     contentBase: './main/public/',
 
      // allow NodeJS to run side-by-side with webpack-dev-server
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
@@ -61,9 +57,9 @@ const config = {
   },
   plugins: [
     new VersionFile({
-        packageFile:path.join(__dirname, 'package.json'),
-        template: path.join(__dirname, 'version.ejs'),
-        outputFile: path.join(wwwPath, 'version.js'),
+        packageFile: path.join(__dirname, 'package.json'),
+        template:    path.join(__dirname, 'version.ejs'),
+        outputFile:  path.join(__dirname, 'main', 'public', 'version.js'),
         extras: { webpack: require("./node_modules/webpack/package.json").version }
     })
   ]

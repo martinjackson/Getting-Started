@@ -1,21 +1,57 @@
 {
   "name": "example",
   "version": "0.1.0",
-  "main": "main.js",
+  "main": "main/bootstrapper.js",
+  "babel": {
+    "sourceMaps": true,
+    "presets": [
+      "react",
+      "latest",
+      "stage-2"
+    ]
+  },
   "homepage": "./",
   "private": true,
   "devDependencies": {
-    "asar": "^0.12.4",
-    "cross-env": "^3.1.4",
-    "electron-packager": "^8.4.0",
-    "react-scripts": "0.8.4"
+    "asar": "^0.13.0",
+    "babel-loader": "^7.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-watch": "^2.0.6",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.1",
+    "electron-packager": "^8.7.0",
+    "file-loader": "^0.11.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "img-loader": "^2.0.0",
+    "jsx-loader": "0.13.2",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.0.2",
+    "react-hot-loader": "^1.3.1",
+    "rimraf": "^2.6.1",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-version-file-plugin": "^0.2.2"
   },
   "dependencies": {
-    "electron": "^1.4.13",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "babel-cli": "^6.24.1",
+    "babel-core": "6.24.1",
+    "devtron": "^1.4.0",
+    "electron": "^1.6.7",
+    "electron-connect": "^0.6.1",
+    "electron-debug": "^1.1.0",
+    "electron-react-devtools": "^0.4.0",
+    "react": "^15.5.4",
+    "react-autobind": "^1.0.6",
+    "react-dom": "^15.5.4",
+    "recharts": "^0.22.4"
   },
-  "scripts": {
+  "old_scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -25,5 +61,15 @@
     "packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
     "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module",
     "makeEXE": "npm run build && npm run packager"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=hot gulp",
+    "prod:build": "webpack",
+    "prod:run": "cross-env NODE_ENV=prod electron .",
+    "prod": "run-s prod:build prod:run",
+    "build:frontend": "webpack",
+    "build:packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "build": "run-s build:frontend build:packager",
+    "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module"
   }
 }

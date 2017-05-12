@@ -11,7 +11,11 @@ app.on('ready', () => {
   mainWindow.on('closed', () => { mainWindow = null; });
 
   var url = (process.env.NODE_ENV == 'live') ?
-      'http://localhost:3000/index.html' :
-      'file://' + __dirname + '/build/index.html';
+      'http://localhost:8080/index.html' :
+      'file://' + __dirname + '/public/index.html';
+
+
+  console.log('Loading:', url);
+
   mainWindow.loadURL(url);
 });

@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+'use babel';
+
+import React from 'react';
 import './App.css';
+import logo from './logo.svg';
+import SimpleLineChart from './SimpleLineChart';
+import Glucose from './Glucose';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
+import spreadTest from './spreadTest';
+
+export default class App extends React.Component {
+    render() {
+
+      spreadTest();
+
+      const h1st = { float: 'right', marginRight: 120 }
+
+
+        return <div>
+          <h1 style={h1st}>Electron App with React</h1>
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+          <ul>
+            <li>ES6 in main thanks to webpack,babel !</li>
+            <li>LiveReload thanks to gulp,electron-connect,webpack,babel !</li>
+            <li>Ctrl+Shift+I to toggle the developer tools.</li>
+          </ul>
 
-export default App;
+          <SimpleLineChart />
+          <Glucose />
+        </div>
+    }
+}

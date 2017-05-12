@@ -1,10 +1,16 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
+
 .App {
   text-align: center;
-}
+  }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 3s linear;
   height: 80px;
+}
+
+.Spinner {
+  animation: App-logo-counter-spin infinite 1.5s linear;
 }
 
 .App-header {
@@ -21,4 +27,9 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes App-logo-counter-spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
