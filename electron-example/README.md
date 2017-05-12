@@ -1,5 +1,5 @@
 
-# Getting Started with React, Electron Example
+# Getting Started with React: Electron Example
 
 ![electron-react-babel-webpack](icons/erb-logo.png)
 
