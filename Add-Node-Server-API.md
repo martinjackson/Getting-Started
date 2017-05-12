@@ -1,21 +1,36 @@
 
 
-## Prerequisites
+# How to Get Started with React & NodeJS
 
-- You already have the latest node, npm (or yarn), and atom editor installed.
-- You have already created your project using the `create-react-app` command.
+**Development tools needed**
+- [NodeJS](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/en/)
+- [Atom Editor](https://atom.io/)
 
-as of this writing
 
-| | |
-| ----- | ------ |
-| node | v6.9.4 |
-| npm | 3.10.10 |
-| yarn | v0.19.1 |
-| atom | 1.13.0 |
+## Starting the project
 
-## Adding Node to serve an API behind your React frontend
-__create-react-app__ already has __Webpack Development Server__ running on port 3000 and serving up live changes to the front end.
+```
+cd ~/projects
+```
+
+create a new project
+```
+git clone https://github.com/martinjackson/Getting-Started-With-React.git your-project-name
+cd your-project-name
+```
+
+run and play with the Electron Example Live
+```
+cd node-example/
+yarn
+atom .
+yarn start
+```
+
+
+## How does this work?
+The __Webpack Development Server__ running on port 3000 and serving up live changes to the front end.
 
 We just need a few changes to your project:
 
