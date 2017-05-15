@@ -52,17 +52,6 @@
     "react-dom": "^15.5.4",
     "recharts": "^0.22.4"
   },
-  "old_scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "dev": "cross-env NODE_ENV=live electron .",
-    "prod": "cross-env NODE_ENV=prod electron .",
-    "packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
-    "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module",
-    "makeEXE": "npm run build && npm run packager"
-  },
   "scripts": {
     "start": "cross-env NODE_ENV=hot gulp",
     "prod:build": "webpack",
@@ -70,10 +59,10 @@
     "prod": "run-s prod:build prod:run",
     "build:frontend": "webpack",
     "build:prep":  "./prep.sh",
-    "build:linux": "electron-packager . $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
-    "build:mac":   "electron-packager . $npm_package_name --platform=linux --arch=x64  --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
-    "build:exe":   "electron-packager . $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
-    "build": "run-s build:frontend build:packager",
-    "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module"
+    "build:linux":  "electron-packager stage $npm_package_name --platform=linux --arch=x64  --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
+    "build:mac":    "electron-packager stage $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
+    "build:exe":    "electron-packager stage $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
+    "build": "run-s build:prep build:linux build:exe",
+    "look": "asar list ./dist/example-linux-x64/resources/app.asar | grep -v node_module"
   }
 }

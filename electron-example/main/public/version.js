@@ -2,7 +2,7 @@
 
 var version = {
 		"name":      "example",
-		"buildTime": "18:23:00.872Z",
+		"buildTime": "19:14:30.092Z",
 		"buildDate": "2017-05-15",
 		"version":   "0.1.0",
 		"NodeJS":    "v7.10.0",
