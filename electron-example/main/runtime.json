@@ -1,0 +1,23 @@
+{
+  "name": "electron-react-es6-fuse",
+  "productName": "electron-react-es6-webpack",
+  "version": "1.0.0",
+  "description": "Electron + React App bundled by Webpack and Babel",
+  "main": "./main/main.js",
+  "author": {
+    "name": "Martin A. Jackson",
+    "email": "martin.a.jackson@gmail.com",
+    "url": "https://github.com/martinjackson"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.4.15",
+    "electron-connect": "^0.6.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "electron-debug": "^1.1.0",
+    "debug": "^2.6.6",
+    "electron-react-devtools": "^0.4.0",
+    "recharts": "^0.22.4"
+  }
+}
