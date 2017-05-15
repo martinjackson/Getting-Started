@@ -32,34 +32,3 @@ gulp.task('default', ['bundle'], function () {
   gulp.watch(['main/public/*.**'],                   ['reload']);
   gulp.watch(['src/**/*.**','./webpack.config.js'],  ['bundle']);
 });
-
-gulp.task("prep", ()=> {
-    rimraf('./dist', function () {
-      mkdirp('./dist/main/public', (err)=> {
-        if (err) console.error(err)
-      });
-
-      frontCode.bundle('>renderer.js')
-
-      gulp.src('main/public/**/*.*', {base: 'main/public/'})
-        .pipe(gulp.dest('./dist/main/public'))
-
-      gulp.src('main/runtime.json')
-        .pipe(rename("package.json"))
-        .pipe(gulp.dest('./dist/'))
-
-     exec('babel main/*.js --out-dir dist',
-          (err, stdout, stderr)=> {
-              if (err === null) {
-                  process.chdir('dist');
-                  exec('yarn install',
-                      (err, stdout, stderr)=> {
-                          console.log(stdout);
-                          console.log(stderr);
-                  });
-              }
-              console.log(stdout);
-              console.log(stderr);
-      });
-    });
-})

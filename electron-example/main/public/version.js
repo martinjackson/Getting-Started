@@ -2,8 +2,8 @@
 
 var version = {
 		"name":      "example",
-		"buildTime": "15:26:50.125Z",
-		"buildDate": "2017-05-12",
+		"buildTime": "18:23:00.872Z",
+		"buildDate": "2017-05-15",
 		"version":   "0.1.0",
 		"NodeJS":    "v7.10.0",
 		"PkgReact":     "^15.5.4",

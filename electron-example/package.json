@@ -2,6 +2,7 @@
   "name": "example",
   "version": "0.1.0",
   "main": "main/bootstrapper.js",
+  "productName": "electron-react-es6-webpack",
   "babel": {
     "sourceMaps": true,
     "presets": [
@@ -68,7 +69,10 @@
     "prod:run": "cross-env NODE_ENV=prod electron .",
     "prod": "run-s prod:build prod:run",
     "build:frontend": "webpack",
-    "build:packager": "electron-packager . $npm_package_name --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "build:prep":  "./prep.sh",
+    "build:linux": "electron-packager . $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "build:mac":   "electron-packager . $npm_package_name --platform=linux --arch=x64  --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true",
+    "build:exe":   "electron-packager . $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --ignore=src --ignore=public --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
     "build": "run-s build:frontend build:packager",
     "look": "asar list ./dist/example-darwin-x64/example.app/Contents/Resources/app.asar | grep -v node_module"
   }
