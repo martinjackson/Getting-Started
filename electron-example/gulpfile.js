@@ -8,8 +8,13 @@ const gulp = require('gulp');
 var rename = require("gulp-rename");
 var gutil = require("gulp-util");
 var webpack = require("webpack");
+var process = require('process');
 
-const ec = require('electron-connect').server.create();
+var port = 20000+process.pid;          // keep this unique
+
+console.log('Starting electron-connect on port: ', port);
+
+const ec = require('electron-connect').server.create({port: port});
 
 gulp.task("restart",   ()=> { ec.restart() })
 gulp.task("reload",    ()=> { ec.reload() })
