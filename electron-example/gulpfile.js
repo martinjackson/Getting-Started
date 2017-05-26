@@ -12,6 +12,8 @@ var process = require('process');
 
 var port = 20000+process.pid;          // keep this unique
 
+process.env['HOT_PORT'] = port;
+
 console.log('Starting electron-connect on port: ', port);
 
 const ec = require('electron-connect').server.create({port: port});

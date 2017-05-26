@@ -7,7 +7,7 @@ var BrowserWindow = electron.BrowserWindow;
 
 var client = null;
 if (process.env.NODE_ENV === 'hot') {
-  console.log('Hot Load detected.');
+    console.log('Hot Load detected on port: ', process.env.HOT_PORT);
   client = require('electron-connect').client;    // Live-reloader
 }
 
@@ -28,7 +28,7 @@ function createWindow (page, specs) {
 
   // only attach electron-connect when live loading
   if (client !== null) {
-     client.create(win);
+      client.create(win, {port:process.env.HOT_PORT});
    }
 
   return win;
