@@ -29,6 +29,7 @@ function createWindow (page, specs) {
   // only attach electron-connect when live loading
   if (client !== null) {
       client.create(win, {port:process.env.HOT_PORT});
+      win.webContents.openDevTools({detach: true});  // POP up Debug window
    }
 
   return win;

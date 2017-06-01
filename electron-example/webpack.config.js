@@ -60,7 +60,11 @@ const config = {
         packageFile: path.join(__dirname, 'package.json'),
         template:    path.join(__dirname, 'version.ejs'),
         outputFile:  path.join(__dirname, 'main', 'public', 'version.js'),
-        extras: { webpack: require("./node_modules/webpack/package.json").version }
+        extras: {
+                 webpack: require("./node_modules/webpack/package.json").version,
+                 electron: require("./node_modules/electron/package.json").version,
+                 react: require("./node_modules/react/package.json").version
+                }
     })
   ]
 

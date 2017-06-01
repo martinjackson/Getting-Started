@@ -43,7 +43,7 @@
     "babel-cli": "^6.24.1",
     "babel-core": "6.24.1",
     "devtron": "^1.4.0",
-    "electron": "^1.6.7",
+    "electron": "^1.6.10",
     "electron-connect": "^0.6.1",
     "electron-debug": "^1.1.0",
     "electron-react-devtools": "^0.4.0",
@@ -58,10 +58,10 @@
     "prod:run": "cross-env NODE_ENV=prod electron .",
     "prod": "run-s prod:build prod:run",
     "build:frontend": "webpack",
-    "build:prep":  "./prep.sh",
-    "build:linux":  "electron-packager stage $npm_package_name --platform=linux --arch=x64  --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
-    "build:mac":    "electron-packager stage $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
-    "build:exe":    "electron-packager stage $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
+    "build:prep": "./prep.sh",
+    "build:linux": "electron-packager stage $npm_package_name --platform=linux --arch=x64  --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
+    "build:mac": "electron-packager stage $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
+    "build:exe": "electron-packager stage $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
     "build": "run-s build:prep build:linux build:exe",
     "look": "asar list ./dist/example-linux-x64/resources/app.asar | grep -v node_module"
   }
