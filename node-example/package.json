@@ -15,6 +15,7 @@
     "axios": "^0.16.1",
     "babel-cli": "^6.18.0",
     "babel-core": "6.24.1",
+    "nodemon": "^1.12.1",
     "react": "^15.4.2",
     "react-autobind": "^1.0.6",
     "react-dom": "^15.4.2"
@@ -47,15 +48,15 @@
     "eject": "react-scripts eject"
   },
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "watch:hotload": "webpack-dev-server --devtool eval-source --progress --colors --hot --inline --history-api-fallback | grep -v 'built' ",
-  "watch:start-api": "cd server && nodemon server.js 8081 ",
-  "start": "npm-run-all --parallel watch:*",
-  "prod:bundle": "webpack",
-  "prod:server": "cd server && sudo nodemon server.js | tee run-$(hostname).log",
-  "prod": "yarn run prod:bundle; yarn run prod:server"
-},
-"author": "Martin Jackson <martin.a.jackson@gmail.com>",
-"license": "MIT"
-
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm install ; cd server ; npm install",
+    "watch:hotload": "webpack-dev-server --devtool eval-source --progress --colors --hot --inline --history-api-fallback | grep -v 'built' ",
+    "watch:start-api": "cd server && nodemon server.js 8081 ",
+    "start": "npm-run-all --parallel watch:*",
+    "prod:bundle": "webpack",
+    "prod:server": "cd server && sudo nodemon server.js | tee run-$(hostname).log",
+    "prod": "yarn run prod:bundle; yarn run prod:server"
+  },
+  "author": "Martin Jackson <martin.a.jackson@gmail.com>",
+  "license": "MIT"
 }
