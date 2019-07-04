@@ -50,7 +50,8 @@
     "react": "^15.5.4",
     "react-autobind": "^1.0.6",
     "react-dom": "^15.5.4",
-    "recharts": "^0.22.4"
+    "recharts": "^0.22.4",
+    "snyk": "^1.189.0"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=hot gulp",
@@ -63,6 +64,9 @@
     "build:mac": "electron-packager stage $npm_package_name --platform=darwin --arch=x64 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true",
     "build:exe": "electron-packager stage $npm_package_name --platform=win32 --arch=ia32 --icon=img/icon --overwrite --prune=true --out=./dist/ --asar=true --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"$npm_product_name\"",
     "build": "run-s build:prep build:linux build:exe",
-    "look": "asar list ./dist/example-linux-x64/resources/app.asar | grep -v node_module"
-  }
+    "look": "asar list ./dist/example-linux-x64/resources/app.asar | grep -v node_module",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
